@@ -254,7 +254,7 @@
   document.getElementById('waDropIn').addEventListener('click', async function(e) {
     e.preventDefault();
     
-    var introText = "Alright lads! I just grabbed a free pint voucher off the website. Coming down to the next meetup!";
+    var introText = "Alright lads! I just grabbed a free drink voucher off the website. Coming down to the next meetup!";
     
     try {
       await navigator.clipboard.writeText(introText);
@@ -268,10 +268,10 @@
 
   // 5. Native Share API
   document.getElementById('shareBtn').addEventListener('click', async function() {
-    var shareText = "Beverley Round Table are giving out free pint vouchers for their next lads night out. Grab yours here: " + window.location.href;
+    var shareText = "Beverley Round Table are giving out free drink vouchers for their next lads night out. Grab yours here: " + window.location.href;
     
     if (navigator.share) {
-      try { await navigator.share({ title: "First Pint On Us", text: shareText, url: window.location.href }); } catch(e){}
+      try { await navigator.share({ title: "First drink On Us", text: shareText, url: window.location.href }); } catch(e){}
     } else {
       try { await navigator.clipboard.writeText(shareText); alert("Link copied to clipboard! Send it to a mate."); } catch(e){}
     }
