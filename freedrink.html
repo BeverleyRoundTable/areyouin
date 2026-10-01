@@ -4,9 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>FIRST DRINK ON US - Beverley Round Table</title>
+
+<!-- Preload Custom Font -->
+<link rel="preload" href="https://raw.githubusercontent.com/BeverleyRoundTable/BRT/main/site/Eurostile_Extended_2_Bold.woff2" as="font" type="font/woff2" crossorigin>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Saira:wght@700;800;900&family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <!-- ===== Social link preview ===== -->
 <meta property="og:type" content="website">
@@ -19,6 +23,15 @@
 <meta property="og:image:height" content="630">
 
 <style>
+  /* --- EUROSTILE FONT INJECTION --- */
+  @font-face {
+      font-family: 'Eurostile';
+      src: url('https://raw.githubusercontent.com/BeverleyRoundTable/BRT/main/site/Eurostile_Extended_2_Bold.woff2') format('woff2');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+  }
+
   :root {
     --gold: #FBAF33; 
     --dark: #1D1D1A; 
@@ -29,19 +42,29 @@
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; min-height: 100%; }
+  
   body {
     font-family: 'Open Sans', system-ui, sans-serif; 
     color: var(--ink);
+    /* Harmonized background combining the free drink glowing accents with main site dot pattern */
     background:
       radial-gradient(900px 500px at 50% -10%, rgba(251,175,51,.16), transparent 60%),
       radial-gradient(700px 600px at 100% 110%, rgba(255,255,255,.04), transparent 55%),
+      radial-gradient(rgba(251, 175, 51, 0.1) 2px, transparent 2px),
       var(--dark);
+    background-size: auto, auto, 30px 30px, auto;
     display: flex; 
     justify-content: center; 
     align-items: center;
     padding: 24px 16px; 
     min-height: 100vh;
   }
+
+  ::selection {
+      background-color: var(--gold);
+      color: var(--dark);
+  }
+
   .wrap { width: 100%; max-width: 460px; }
 
   /* Shared screen animation */
@@ -51,14 +74,14 @@
 
   /* Typography */
   .kick {
-    display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: .14em;
+    display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: .14em;
     text-transform: uppercase; color: var(--gold); margin-bottom: 14px;
-    font-family: 'Saira', system-ui, sans-serif;
+    font-family: 'Eurostile', system-ui, sans-serif;
   }
     
   h1 {
-     font-size: 42px; line-height: 1.05; font-weight: 800; margin: 0 0 14px;
-     font-family: 'Saira', system-ui, sans-serif; text-transform: uppercase;
+     font-size: 42px; line-height: 1.05; font-weight: 700; margin: 0 0 14px;
+     font-family: 'Eurostile', system-ui, sans-serif; text-transform: uppercase;
   }
   h1 .em { color: var(--gold); }
   .lead { font-size: 16px; color: var(--dim); line-height: 1.55; margin: 0 0 28px; }
@@ -73,18 +96,19 @@
   /* Buttons */
   .btn {
     display: flex; justify-content: center; align-items: center; width: 100%;
-    padding: 16px; border: 0; border-radius: 13px; cursor: pointer; font: inherit;
-    font-weight: 800; font-size: 16.5px; text-decoration: none;
-    transition: transform .12s, filter .15s, box-shadow .15s;
+    padding: 16px; border: 2px solid transparent; border-radius: 9999px; cursor: pointer; font: inherit;
+    font-family: 'Eurostile', system-ui, sans-serif;
+    font-weight: 700; font-size: 16.5px; text-decoration: none; text-transform: uppercase;
+    transition: all .3s ease;
   }
-  .btn-gold { background: var(--gold); color: var(--dark); box-shadow: 0 4px 14px rgba(251,175,51,0.25); }
-  .btn-gold:hover { filter: brightness(1.05); box-shadow: 0 6px 20px rgba(251,175,51,0.4); }
+  .btn-gold { background: var(--gold); color: var(--dark); }
+  .btn-gold:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(251,175,51,0.3); background: #fff;}
   .btn:active { transform: scale(.985); }
-  .btn-ghost { background: transparent; color: var(--ink); border: 1.6px solid var(--line); }
-  .btn-ghost:hover { border-color: var(--gold); }
+  .btn-ghost { background: transparent; color: var(--gold); border: 2px solid var(--gold); }
+  .btn-ghost:hover { background: var(--gold); color: var(--dark); transform: translateY(-4px); }
   .btn + .btn { margin-top: 12px; }
 
-  /* Premium Ticket Styling (CSS Only) */
+  /* Premium Ticket Styling */
   .ticket-wrap {
     padding: 3px;
     border-radius: 18px;
@@ -115,8 +139,8 @@
   .ticket-inner::before { left: -14px; border-right: 1px solid rgba(251,175,51,0.4); }
   .ticket-inner::after { right: -14px; border-left: 1px solid rgba(251,175,51,0.4); }
 
-  .t-header { font-family: 'Saira', sans-serif; font-weight: 900; font-size: 32px; color: var(--gold); text-transform: uppercase; line-height: 1.05; margin-bottom: 6px;}
-  .t-sub { font-size: 14px; color: var(--ink); font-weight: 700; margin-bottom: 24px; letter-spacing: 0.1em; opacity: 0.9;}
+  .t-header { font-family: 'Eurostile', sans-serif; font-weight: 700; font-size: 36px; color: var(--gold); text-transform: uppercase; line-height: 1.05; margin-bottom: 6px;}
+  .t-sub { font-family: 'Eurostile', sans-serif; font-size: 14px; color: var(--ink); font-weight: 700; margin-bottom: 24px; letter-spacing: 0.1em; opacity: 0.9;}
   .t-divider { border-top: 1px dashed rgba(255,255,255,0.15); margin: 20px 0; }
   
   /* Dynamic Event Injector */
@@ -124,12 +148,12 @@
   @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
   
   .event-details { 
-    text-align: left; background: rgba(0,0,0,0.25); padding: 14px 18px; 
-    border-radius: 10px; border-left: 3px solid var(--gold);
+    text-align: left; background: rgba(0,0,0,0.3); padding: 16px 20px; 
+    border-radius: 12px; border-left: 3px solid var(--gold); border: 1px solid rgba(255,255,255,0.05);
   }
-  .e-label { font-size: 11px; text-transform: uppercase; color: var(--gold); font-weight: 800; letter-spacing: 0.12em; margin-bottom: 8px;}
-  .e-title { font-weight: 700; font-size: 16px; color: var(--ink); margin-bottom: 4px; line-height: 1.3;}
-  .e-meta { font-size: 13px; font-weight: 600; color: var(--dim); display: flex; align-items: center; gap: 6px; margin-top: 4px;}
+  .e-label { font-family: 'Eurostile', sans-serif; font-size: 12px; text-transform: uppercase; color: var(--gold); font-weight: 700; letter-spacing: 0.12em; margin-bottom: 8px;}
+  .e-title { font-family: 'Eurostile', sans-serif; font-weight: 700; font-size: 18px; color: var(--ink); margin-bottom: 4px; line-height: 1.3;}
+  .e-meta { font-size: 13.5px; font-weight: 600; color: var(--dim); display: flex; align-items: center; gap: 6px; margin-top: 4px;}
 
 </style>
 </head>
@@ -147,7 +171,7 @@
     <p class="lead">Thinking about coming down to a Beverley Round Table night? The hardest part is walking through the door for the first time.</p>
     <p class="lead" style="margin-top:-14px;">Grab this digital voucher, turn up to our next casual social, and your first drink is sorted. No pressure, no formal inductions, just a good laugh with local lads.</p>
     
-    <button class="btn btn-gold" id="claimBtn">Claim My Digital Voucher →</button>
+    <button class="btn btn-gold" id="claimBtn">Claim My Digital Voucher 🎟️</button>
   </section>
 
   <!-- STEP 2: VOUCHER SCREEN -->
@@ -176,7 +200,7 @@
     <p class="lead" style="text-align: center; font-size: 15px;">Let us know you're coming so we can look out for you!</p>
 
     <!-- Opens WhatsApp and pre-fills a message -->
-    <a class="btn btn-gold" id="waDropIn" href="#" target="_blank" rel="noopener">Drop into the WhatsApp Chat 👋</a>
+    <a class="btn btn-gold" id="waDropIn" href="#" target="_blank" rel="noopener">Drop into the WhatsApp Chat 💬</a>
     <button class="btn btn-ghost" id="shareBtn">Share with a mate</button>
     <p class="meta">Takes you to our open "Say Hello!" WhatsApp group.</p>
 
@@ -258,7 +282,7 @@
     
     try {
       await navigator.clipboard.writeText(introText);
-      alert("We've copied an intro message to your clipboard!\\n\\nJust paste it into the chat when you join the group so we know you're coming.");
+      alert("We've copied an intro message to your clipboard!\n\nJust paste it into the chat when you join the group so we know you're coming.");
     } catch(err) {
       // Fall silently if clipboard access is blocked
     }
